@@ -23,7 +23,7 @@
 <script setup>
 import { inject, computed } from 'vue';
 
-import { BNavbar, BNavbarBrand, BNavbarToggle, BCollapse, BNav, BNavItem } from "bootstrap-vue-next";
+import { BNavbar, BNavbarBrand, BNavbarToggle, BCollapse, BNavbarNav, BNavItem } from "bootstrap-vue-next";
 
 const config = inject('config', {});
 
