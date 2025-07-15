@@ -1,3 +1,23 @@
+<script>
+  import { BUSINESS_NAME } from "../config";
+  export default {
+    props: {
+      copyright: {
+        type: String,
+        default: `© ${new Date().getFullYear()} ${BUSINESS_NAME} All rights reserved.`,
+      },
+      padding: { type: Number, default: 4 },
+      background: { type: String, default: "primary" },
+      footerLinks: { type: Array, default: () => [] },
+    },
+  };
+</script>
+
+<style scoped>
+  footer {
+    font-size: small;
+  }
+</style>
 <template>
   <footer
     :class="`text-center pt-${padding} pb-${
@@ -17,24 +37,3 @@
     <strong>Built by Ryan Buchanan</strong>
   </footer>
 </template>
-
-<script>
-import { BUSINESS_NAME } from "../config";
-export default {
-  props: {
-    copyright: {
-      type: String,
-      default: `© ${new Date().getFullYear()} ${BUSINESS_NAME} All rights reserved.`,
-    },
-    padding: { type: Number, default: 4 },
-    background: { type: String, default: "primary" },
-    footerLinks: { type: Array, default: () => [] },
-  },
-};
-</script>
-
-<style scoped>
-footer {
-  font-size: small;
-}
-</style>
