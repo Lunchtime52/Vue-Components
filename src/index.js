@@ -10,40 +10,38 @@
  */
 
 // 1. DYNAMICALLY IMPORT ALL VUE COMPONENTS
-// The `import.meta.glob` function finds all files matching the pattern.
-// - './**/*.vue' means look in the current directory and all subdirectories for .vue files.
-// - `{ eager: true }` tells Vite to import these files immediately, rather than lazy-loading them.
 const modules = import.meta.glob('./**/*.vue', { eager: true });
 
 // 2. CREATE THE VUE PLUGIN
-// A Vue plugin is an object with an `install` method.
-// When you call `app.use(yourPlugin)`, Vue will execute this method.
 const install = (app) => {
+  // DEBUGGING: Log all the modules that Vite found.
+  console.log('[Component Library] Found modules:', modules);
+
   // 3. LOOP THROUGH THE FOUND MODULES AND REGISTER EACH COMPONENT
   for (const path in modules) {
-    // The module object contains the component definition under the `default` key.
     const component = modules[path].default;
 
-    // 4. DERIVE THE COMPONENT NAME FROM THE FILE PATH (ROBUST METHOD)
-    // This logic extracts the component name from the path in a way that
-    // works across all operating systems (Windows, macOS, Linux).
-    // It finds the last part of the path and removes the .vue extension.
+    // Make sure the component is a valid object before proceeding
+    if (!component) {
+      console.error(`[Component Library] Failed to load component from path: ${path}`);
+      continue; // Skip to the next one
+    }
+
     const componentNameMatch = path.match(/([^/\\]+)\.vue$/);
 
     if (componentNameMatch) {
         const componentName = componentNameMatch[1];
-        console.log(`[MyLibrary] Registering component: ${componentName}`);
+        
+        // DEBUGGING: Log each component as it's being registered.
+        console.log(`[Component Library] Registering component: ${componentName}`);
 
         // 5. REGISTER THE COMPONENT GLOBALLY
-        // This makes the component available throughout the app that uses this library.
-        // For example, a 'Button.vue' component can be used as `<Button />`.
         app.component(componentName, component);
     }
   }
 };
 
 // 6. EXPORT THE PLUGIN
-// This is the primary export of your library.
 export default {
   install,
 };
