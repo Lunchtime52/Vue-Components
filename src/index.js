@@ -30,6 +30,11 @@ const install = (app) => {
 };
 
 // 3. EXPORT THE PLUGIN
-export default {
+const plugin = {
   install,
 };
+
+// DEBUGGING: Log the plugin object to the console before exporting.
+console.log('[Component Library] Exporting plugin:', plugin);
+
+export default plugin;
