@@ -2,47 +2,37 @@
 
 /**
  * This file acts as the entry point for your component library.
- * It automatically finds all .vue components in this directory and its subdirectories,
- * then registers them globally as a Vue plugin.
+ * It automatically finds all .vue components in the same directory
+ * and exports them as a single object.
  *
  * This approach uses Vite's `import.meta.glob` feature for dynamic module loading.
- * https://vitejs.dev/guide/features.html#glob-import
  */
 
 // 1. DYNAMICALLY IMPORT ALL VUE COMPONENTS
-// Changed the glob pattern to be more specific, looking only in the current directory.
+// This glob pattern looks for .vue files in the same directory as index.js.
 const modules = import.meta.glob('./*.vue', { eager: true });
 
-// 2. CREATE THE VUE PLUGIN
-const install = (app) => {
-  // DEBUGGING: Log all the modules that Vite found.
-  console.log('[Component Library] Found modules:', modules);
+// 2. CREATE AN OBJECT TO HOLD THE COMPONENTS
+const components = {};
 
-  // 3. LOOP THROUGH THE FOUND MODULES AND REGISTER EACH COMPONENT
-  for (const path in modules) {
-    const component = modules[path].default;
+// 3. LOOP THROUGH THE FOUND MODULES AND PREPARE THEM FOR EXPORT
+for (const path in modules) {
+  const component = modules[path].default;
 
-    // Make sure the component is a valid object before proceeding
-    if (!component) {
-      console.error(`[Component Library] Failed to load component from path: ${path}`);
-      continue; // Skip to the next one
-    }
-
+  // Make sure the component is a valid object before proceeding
+  if (component) {
+    // Derive the component name from the file path
     const componentNameMatch = path.match(/([^/\\]+)\.vue$/);
-
     if (componentNameMatch) {
-        const componentName = componentNameMatch[1];
-        
-        // DEBUGGING: Log each component as it's being registered.
-        console.log(`[Component Library] Registering component: ${componentName}`);
-
-        // 5. REGISTER THE COMPONENT GLOBALLY
-        app.component(componentName, component);
+      const componentName = componentNameMatch[1];
+      components[componentName] = component;
     }
   }
-};
+}
 
-// 6. EXPORT THE PLUGIN
-export default {
-  install,
-};
+// DEBUGGING: Log the final object of components that will be exported.
+console.log('[Component Library] Exporting components:', components);
+
+// 4. EXPORT THE COMPONENTS OBJECT
+// This will be imported by the consuming application.
+export default components;
