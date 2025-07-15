@@ -19,7 +19,7 @@
       <slot></slot>
       <button
         v-if="buttonText"
-        :variant="buttonVariant"
+        :variant="props.buttonVariant"
         :to="{ name: buttonHref }">
         {{ buttonText }}
       </button>
