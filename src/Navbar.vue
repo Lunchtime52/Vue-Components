@@ -1,7 +1,7 @@
 <template>
 	<BNavbar
-		:variant=props.variant
-		:bg=props.color
+		:variant="props.variant"
+		:bg="props.color"
 		class="px-5"
 		sticky="top"
 	>
@@ -31,7 +31,7 @@ const props = defineProps({
   logoText: { type: String, default: "My Site" },
   logoHref: { type: String, default: "Home" },
   navLinks: { type: Array, default: () => [] },
-  variant: { type: String, default: "dark" },
+  variant: { type: String, default: "primary" },
   color: { type: String, default: "primary" },
   base: {
     type: String,
