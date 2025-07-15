@@ -1,6 +1,8 @@
 <script>
   // import { BUSINESS_NAME } from "../config";
-  const BUSINESS_NAME = "Buis Name";
+  import {inject} from 'vue';
+
+const BUSINESS_NAME = inject('BUSINESS_NAME','Default Business Name');
 
   export default {
     props: {
