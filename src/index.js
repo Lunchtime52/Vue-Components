@@ -1,5 +1,4 @@
 // src/index.js
-import { createBootstrap } from 'bootstrap-vue-next';
 
 // --- MANUAL COMPONENT IMPORTS ---
 // 1. Manually import each component from your library here.
@@ -8,10 +7,8 @@ import Hero from './Hero.vue';
 
 // 2. CREATE THE PLUGIN'S INSTALL METHOD
 const install = (app) => {
-  // First, install all of bootstrap-vue-next's components.
-  app.use(createBootstrap());
-
-  // Second, manually register each of your imported components.
+  // This plugin's only job is to register its own components.
+  // The main application will be responsible for installing BootstrapVue.
   app.component('Footer', Footer);
   app.component('Hero', Hero);
 };
