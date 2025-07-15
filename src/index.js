@@ -32,6 +32,8 @@ const install = (app) => {
 
     if (componentNameMatch) {
         const componentName = componentNameMatch[1];
+        console.log(`[MyLibrary] Registering component: ${componentName}`);
+
         // 5. REGISTER THE COMPONENT GLOBALLY
         // This makes the component available throughout the app that uses this library.
         // For example, a 'Button.vue' component can be used as `<Button />`.
