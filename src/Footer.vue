@@ -1,14 +1,14 @@
 <script>
-  // import { BUSINESS_NAME } from "../config";
   import {inject} from 'vue';
 
-const BUSINESS_NAME = inject('BUSINESS_NAME','Default Business Name');
+
+const config = inject('config', {});
 
   export default {
     props: {
       copyright: {
         type: String,
-        default: `© ${new Date().getFullYear()} ${BUSINESS_NAME} All rights reserved.`,
+        default: `© ${new Date().getFullYear()} ${config.BUSINESS_NAME} All rights reserved.`,
       },
       padding: { type: Number, default: 4 },
       background: { type: String, default: "primary" },
