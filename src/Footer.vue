@@ -41,9 +41,27 @@ const copyrightText = computed(() => {
 });
 </script>
 
+<style scoped>
+  footer {
+    font-size: small;
+  }
+</style>
 <template>
-  <footer>
-    <p>{{ copyrightText }}</p>
-    <!-- You can add logic for your footerLinks here -->
+  <footer
+    :class="`text-center pt-${padding} pb-${
+      padding - 1
+    } bg-${background} px-2 mt-5`"
+  >
+    <p>{{ copyright }}</p>
+    <div v-if="footerLinks.length">
+      <a
+        v-for="link in footerLinks"
+        :key="link.href"
+        :href="link.href"
+        class="mx-2"
+        >{{ link.text }}</a
+      >
+    </div>
+    <strong>Built by Ryan Buchanan</strong>
   </footer>
 </template>
