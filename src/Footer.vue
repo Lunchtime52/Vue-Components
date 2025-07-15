@@ -1,5 +1,7 @@
 <script>
-  import { BUSINESS_NAME } from "../config";
+  // import { BUSINESS_NAME } from "../config";
+  const BUSINESS_NAME = "Buis Name";
+
   export default {
     props: {
       copyright: {
