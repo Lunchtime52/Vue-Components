@@ -24,6 +24,7 @@
 <script>
 
 import { BNavbar, BNavbarBrand, BNavbarToggle, BCollapse, BNav, BNavItem } from "bootstrap-vue-next";
+import inject from "vue";
 const config = inject('config', {});
 export default {
 	props: {
