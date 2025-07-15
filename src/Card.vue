@@ -6,28 +6,28 @@
       <h5 :class="`fs-${titleScale}`">{{ title }}</h5>
       <p :class="`fs-${textScale}`">{{ text }}</p>
       <slot></slot>
-      <Bbutton
+      <BButton
         v-if="buttonText"
         :variant="buttonVariant"
         :to="{ name: buttonHref }">
         {{ buttonText }}
-      </Bbutton>
+      </BButton>
     </div>
     <div v-else :class="['customMargin', cardMargin]">
       <h5>:class="`fs-${titleScale}`">{{ title }}</h5>
       <p :class="`fs-${textScale}`">{{ text }}</p>
       <slot></slot>
-      <button
+      <BButton
         v-if="buttonText"
         :variant="props.buttonVariant"
         :to="{ name: buttonHref }">
         {{ buttonText }}
-      </button>
+      </BButton>
     </div>
   </template>
   
   <script setup>
-  import { Bbutton } from "bootstrap-vue-next";
+  import { BButton } from "bootstrap-vue-next";
   const props = defineProps({
     title: { type: String, default: "Card Title" },
     text: { type: String, default: "Some example text." },
