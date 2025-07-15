@@ -1,6 +1,4 @@
-// src/index.js
 
-// --- AUTOMATED COMPONENT IMPORTS ---
 // Import each component from your library here.
 import CallToAction from './CallToAction.vue';
 import Card from './Card.vue';
