@@ -1,28 +1,31 @@
 // src/index.js
 
 // --- AUTOMATED COMPONENT IMPORTS ---
-// Use require.context to automatically import all .vue files
-const components = import.meta.glob("./*.vue");
+// Import each component from your library here.
+import CallToAction from './CallToAction.vue';
+import Card from './Card.vue';
+import ContactForm from './ContactForm.vue';
+import FeatureList from './FeatureList.vue';
+import Footer from './Footer.vue';
+import Gallery from './Gallery.vue';
+import Hero from './Hero.vue';
+import ImageWithText from './ImageWithText.vue';
+import Navbar from './Navbar.vue';
+import Testimonial from './Testimonial.vue';
 
-const install = async (app) => {
-  // Make the install function async
+// CREATE THE PLUGIN'S INSTALL METHOD
+const install = (app) => {
   // This plugin's only job is to register its own components.
-  // The main application will be responsible for installing BootstrapVue.
-  const registrationPromises = [];
-
-  for (const fileName in components) {
-    const componentConfig = components[fileName]; // Get the function that imports the module
-    const componentName = fileName
-      .replace(/^.\//, "") // Remove "./"
-      .replace(/\.vue$/, "");
-    const registrationPromise = componentConfig().then((module) => {
-      // Create a promise for each component registration
-      app.component(componentName, module.default || module);
-    });
-    registrationPromises.push(registrationPromise);
-  }
-
-  await Promise.all(registrationPromises); // Wait for all components to be registered
+  app.component('CallToAction', CallToAction);
+  app.component('Card', Card);
+  app.component('ContactForm', ContactForm);
+  app.component('FeatureList', FeatureList);
+  app.component('Footer', Footer);
+  app.component('Gallery', Gallery);
+  app.component('Hero', Hero);
+  app.component('ImageWithText', ImageWithText);
+  app.component('Navbar', Navbar);
+  app.component('Testimonial', Testimonial);
 };
 
 // 3. EXPORT THE PLUGIN
