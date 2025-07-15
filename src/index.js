@@ -10,7 +10,8 @@
  */
 
 // 1. DYNAMICALLY IMPORT ALL VUE COMPONENTS
-const modules = import.meta.glob('./**/*.vue', { eager: true });
+// Changed the glob pattern to be more specific, looking only in the current directory.
+const modules = import.meta.glob('./*.vue', { eager: true });
 
 // 2. CREATE THE VUE PLUGIN
 const install = (app) => {
