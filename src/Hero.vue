@@ -1,4 +1,5 @@
 <script setup>
+import { BButton } from 'bootstrap-vue-next';
   const props = defineProps({
     title: { type: String, required: true },
     subtitle: { type: String, required: false, default: "" },
