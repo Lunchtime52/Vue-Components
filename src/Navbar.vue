@@ -21,10 +21,27 @@
 	</BNavbar>
 </template>
 
-<script setup>
+<script>
+import { inject } from 'vue';
 
+// Regular script block to define options
+export default {
+  props: {
+    logoText: { type: String, default: "My Site" },
+    logoHref: { type: String, default: "Home" },
+    navLinks: { type: Array, default: () => [] },
+    variant: { type: String, default: "dark" },
+    color: { type: String, default: "primary" },
+    base: {
+      type: String,
+      default: inject('config', {}).baseUrl // Access config here
+    },
+  },
+};
+</script>
+
+<script setup>
 import { BNavbar, BNavbarBrand, BNavbarToggle, BCollapse, BNav, BNavItem } from "bootstrap-vue-next";
-import inject from "vue";
 const config = inject('config', {});
 
 const props = defineProps({
