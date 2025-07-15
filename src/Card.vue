@@ -8,7 +8,7 @@
       <slot></slot>
       <BButton
         v-if="buttonText"
-        :variant="buttonVariant"
+        :variant="props.buttonVariant"
         :to="{ name: buttonHref }">
         {{ buttonText }}
       </BButton>
