@@ -12,7 +12,7 @@
     </BContainer>
   </template>
   
-  <script>
+  <script setup>
   import { BContainer, BRow, BCol } from "bootstrap-vue-next";
   export default {
     props: {
