@@ -2,19 +2,23 @@
 
 // --- AUTOMATED COMPONENT IMPORTS ---
 // Use require.context to automatically import all .vue files
-const components = require.context('/src', false, /\.vue$/);
+const components = import.meta.glob('/src/*.vue');
 
 // 2. CREATE THE PLUGIN'S INSTALL METHOD
 const install = (app) => {
   // This plugin's only job is to register its own components.
   // The main application will be responsible for installing BootstrapVue.
-  components.keys().forEach(fileName => {
+  for (const fileName in components) {
     const componentConfig = components(fileName);
     const componentName = fileName
       .replace(/^\.\//, '')
-      .replace(/\.\w+$/, '');
-    app.component(componentName, componentConfig.default || componentConfig);
-  });
+      .replace(/\.vue$/, '');
+
+    // Async import (dynamic import)
+    componentConfig().then(module => {
+      app.component(componentName, module.default || module);
+    });
+  }
 };
 
 // 3. EXPORT THE PLUGIN
