@@ -52,7 +52,7 @@ const copyrightText = computed(() => {
       padding - 1
     } bg-${background} px-2 mt-5`"
   >
-    <p>{{ copyright }}</p>
+    <p>{{ copyrightText }}</p>
     <div v-if="footerLinks.length">
       <a
         v-for="link in footerLinks"
