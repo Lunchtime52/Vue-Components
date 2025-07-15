@@ -26,17 +26,18 @@
 import { BNavbar, BNavbarBrand, BNavbarToggle, BCollapse, BNav, BNavItem } from "bootstrap-vue-next";
 import inject from "vue";
 const config = inject('config', {});
-export default {
-	props: {
-		logoText: { type: String, default: "My Site" },
-		logoHref: { type: String, default: "Home" },
-		navLinks: { type: Array, default: () => [] },
-		variant: { type: String, default: "dark" },
-		color: { type: String, default: "primary" },
-		base: { type: String, default: config.baseUrl },
-	},
-};
+
+const props = defineProps({
+	logoText: { type: String, default: "My Site" },
+	logoHref: { type: String, default: "Home" },
+	navLinks: { type: Array, default: () => [] },
+    variant: { type: String, default: "dark" },
+    color: { type: String, default: "primary" },
+    base: { type: String, default: config.baseUrl },
+});
 </script>
+
+
 
 <style scoped>
 /* Optional: Add component-specific styles here */
