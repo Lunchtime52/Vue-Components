@@ -6,12 +6,12 @@
       <h5 :class="`fs-${titleScale}`">{{ title }}</h5>
       <p :class="`fs-${textScale}`">{{ text }}</p>
       <slot></slot>
-      <button
+      <Bbutton
         v-if="buttonText"
         :variant="buttonVariant"
         :to="{ name: buttonHref }">
         {{ buttonText }}
-      </button>
+      </Bbutton>
     </div>
     <div v-else :class="['customMargin', cardMargin]">
       <h5>:class="`fs-${titleScale}`">{{ title }}</h5>
@@ -26,21 +26,23 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    props: {
-      title: { type: String, default: "Card Title" },
-      text: { type: String, default: "Some example text." },
-      imgSrc: { type: String, required: false },
-      imgAlt: { type: String, required: false },
-      imgTop: { type: Boolean, default: false },
-      buttonText: { type: String, required: false },
-      buttonVariant: { type: String, default: "success" },
-      buttonHref: { type: String, default: "NotFound" },
-      titleScale: { type: Number, default: 4 },
-      textScale: { type: Number, default: 5 },
-      cardMargin: { type: String, default: "" },
-    },
-  };
+  <script setup>
+  import { Bbutton } from "bootstrap-vue-next";
+  const props = defineProps({
+    title: { type: String, default: "Card Title" },
+    text: { type: String, default: "Some example text." },
+    imgSrc: { type: String, required: false },
+    imgAlt: { type: String, required: false },
+    imgTop: { type: Boolean, default: false },
+    buttonText: { type: String, required: false },
+    buttonVariant: { type: String, default: "success" },
+    buttonHref: { type: String, default: "NotFound" },
+    titleScale: { type: Number, default: 4 },
+    textScale: { type: Number, default: 5 },
+    cardMargin: { type: String, default: "" },
+  });
   </script>
+  
+  
+ 
   
