@@ -1,4 +1,4 @@
-<script>
+<script setup>
   import {inject} from 'vue';
 
 
