@@ -13,9 +13,10 @@
   </template>
   
   <script setup>
-  import { BContainer, BRow, BCol } from "bootstrap-vue-next";
-  export default {
-    props: {
+  import { BContainer, BRow, BCol } from 'bootstrap-vue-next';
+  const props = defineProps({
+
+   
       imageUrl: { type: String, required: false, default: "https://placehold.co/600x400" },
       imageAlt: { type: String, required: false, default: "Placeholder" },
       title: { type: String, required: false, default: "Title" },
@@ -29,9 +30,9 @@
         required: false,
         default: "image-left",
         validator: (value) => ["image-left", "image-right"].includes(value),
-      },
+      
     },
-  };
+  });
   </script>
   
   <style scoped></style>
