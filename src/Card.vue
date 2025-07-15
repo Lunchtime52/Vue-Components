@@ -1,8 +1,8 @@
 <template>
     <div v-if="props.imgSrc || props.imgAlt || props.imgTop" :class="['customMargin', cardMargin]">
-      <template >
+    
         <img v-if="props.imgSrc" :src="props.imgSrc" :alt="props.imgAlt" :top="props.imgTop" />
-      </template>
+     
       <h5 :class="`fs-${titleScale}`">{{ title }}</h5>
       <p :class="`fs-${textScale}`">{{ text }}</p>
       <slot></slot>
