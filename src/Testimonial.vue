@@ -10,23 +10,21 @@
     </BContainer>
   </template>
     
-  <script>
+  <script setup>
   import { BContainer } from 'bootstrap-vue-next';
-  export default {
-    name: 'Testimonial',
-    props: {
-      quote: {
-        type: String,
-        required: true,
-      },
-      author: {
-        type: String,
-        required: true,
-      },
-      image: {
-        type: String,
-        default: null,
-      },
+  const props = defineProps({
+    quote: {
+      type: String,
+      required: true,
     },
-  };
+    author: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      default: null,
+    },
+  });
+ 
   </script>

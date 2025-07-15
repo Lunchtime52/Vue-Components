@@ -1,7 +1,7 @@
 <template>
 	<BNavbar
-		:variant="props.variant"
-		:bg="props.color"
+		:variant=props.variant
+		:bg=props.color
 		class="px-5"
 		sticky="top"
 	>
@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { inject, computed } from 'vue';
+import { inject } from 'vue';
 
 import { BNavbar, BNavbarBrand, BNavbarToggle, BCollapse, BNavbarNav, BNavItem } from "bootstrap-vue-next";
 
