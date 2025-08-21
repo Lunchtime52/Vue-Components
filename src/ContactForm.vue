@@ -47,31 +47,17 @@
       </form>
     </div>
   </template>
-  
-  <script>
-  export default {
-    name: "ContactForm",
-    props: {
-      title: {
-        type: String,
-        required: true,
-      },
-      buttonText: {
-        type: String,
-        required: true,
-      },
-      buttonHref: {
-        type: String,
-        required: true,
-      },
-    },
-    data() {
-      return {
-        name: "",
-        email: "",
-        message: "",
-      };
-    },
-  };
+
+<script setup>
+import { ref } from 'vue';
+
+const props = defineProps({
+  title: { type: String, required: false, default: "Contact Us" },
+  buttonText: { type: String, required: false, default: "Submit" },
+  buttonHref: { type: String, required: false, default: "NotFound" },
+});
+
+const name = ref('');
+const email = ref('');
+const message = ref('');
   </script>
-  

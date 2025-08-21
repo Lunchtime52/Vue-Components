@@ -5,7 +5,10 @@
      
       <h5 :class="`fs-${titleScale}`">{{ title }}</h5>
       <p :class="`fs-${textScale}`">{{ text }}</p>
-      <slot></slot>
+      <slot>
+        <!-- Fallback content for the default slot -->
+        <p>No extra content provided for this card.</p>
+      </slot>
       <BButton
         v-if="buttonText"
         :variant="props.buttonVariant"
@@ -14,15 +17,8 @@
       </BButton>
     </div>
     <div v-else :class="['customMargin', cardMargin]">
-      <h5>:class="`fs-${titleScale}`">{{ title }}</h5>
+      <h5 :class="`fs-${titleScale}`">{{ title }}</h5>
       <p :class="`fs-${textScale}`">{{ text }}</p>
-      <slot></slot>
-      <BButton
-        v-if="buttonText"
-        :variant="props.buttonVariant"
-        :to="{ name: buttonHref }">
-        {{ buttonText }}
-      </BButton>
     </div>
   </template>
   
@@ -38,7 +34,7 @@
     buttonVariant: { type: String, default: "success" },
     buttonHref: { type: String, default: "NotFound" },
     titleScale: { type: Number, default: 4 },
-    textScale: { type: Number, default: 5 },
+    textScale: { type : Number, default: 5 },
     cardMargin: { type: String, default: "" },
   });
   </script>

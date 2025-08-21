@@ -16,7 +16,7 @@
   defineProps({
     images: {
       type: Array,
-      required: true,
+      required: false,
       default: () => [],
     },
     galleryMargin: { type: String, default: "mb-4" },

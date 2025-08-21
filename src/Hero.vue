@@ -1,7 +1,7 @@
 <script setup>
 import { BButton } from 'bootstrap-vue-next';
   const props = defineProps({
-    title: { type: String, required: true },
+    title: { type: String, required: false, default: "" },
     subtitle: { type: String, required: false, default: "" },
     buttonText: { type: String, required: false },
     buttonVariant: { type: String, required: false, default: "primary" },

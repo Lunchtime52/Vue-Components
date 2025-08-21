@@ -15,11 +15,13 @@
   const props = defineProps({
     quote: {
       type: String,
-      required: true,
+      required: false,
+      default: 'No quote provided',
     },
     author: {
       type: String,
-      required: true,
+      required: false,
+      default: 'No author provided',
     },
     image: {
       type: String,

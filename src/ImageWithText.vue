@@ -1,5 +1,5 @@
 <template>
-    <BContainer class="section-padding">
+    <BContainer >
       <BRow class="align-items-center" :class="layoutDirection === 'image-right' ? 'flex-row-reverse' : ''">
          <BCol :class="imageClass">
           <img :src="imageUrl" class="img-fluid" :alt="imageAlt" />
